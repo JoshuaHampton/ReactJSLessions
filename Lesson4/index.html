@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>React Lesson 4</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <script src="https://fb.me/react-0.14.7.min.js"></script>
+    <script src="https://fb.me/react-dom-0.14.7.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.2/browser.min.js"></script>  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      //Global
+      var a = 10;
+      function logA(){
+        console.log(a);
+      }
+      logA();
+      console.log(a);
+
+      //Function
+      function logB(){
+        var b = 20;
+        console.log(b);
+      }
+      logB();
+      
+      //Lack of Block Scope
+      var c = 21;
+      if(false){
+        var c = 30;
+        console.log(c);
+      } 
+      console.log(c);
+
+      //Block Scope
+      if(true){
+        let d = 40;
+        console.log(d);
+      } 
+    </script>
+    <script type="text/babel">
+        var SecondComp = React.createClass({
+          render: function(){
+            let name = this.props.name;
+            return (
+              <div>
+                <h2>This is my Second Component</h2>
+                <p>Hello, {name}!</p>
+                <p>I'm using {this.props.thing}</p>
+              </div>
+            )
+          }
+        });
+
+        SecondComp.defaultProps = {
+          thing: 'props & defaults'
+        };
+
+        ReactDOM.render(
+          <SecondComp name="Joshua"/>,
+          document.getElementById('app')
+        );
+    </script>
+
+
+    </script>
+  </body>
+</html>

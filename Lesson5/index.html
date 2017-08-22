@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>React Lesson 5</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <script src="https://fb.me/react-0.14.7.min.js"></script>
+    <script src="https://fb.me/react-dom-0.14.7.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.2/browser.min.js"></script>  </head>
+  <body>
+    <style type="text/css">
+      .input-group{
+        width: 300px;
+      }
+    </style>
+    <div id="app"></div>
+    <script type="text/babel">
+        var ThirdComp = React.createClass({
+          resetName: function(event){
+            this.setState({
+              name: ""
+            })
+            document.getElementById("txt_input").value = "";
+          },
+          nameChanged: function(event){
+            this.setState({
+              name: event.target.value
+            })
+          },
+          getInitialState: function(){
+            return {
+              name: ""
+            }
+          },
+          render: function(){
+            let name = this.state.name;
+            return (
+              <div>
+                <h2>This is my Third Component</h2>
+                
+                <p>Hello, {name}!</p>
+
+                <div className="input-group" >
+                  <input id="txt_input" type="text" className="form-control" placeholder="Name..." aria-label="Name..." onChange={this.nameChanged}/>
+                  <span className="input-group-btn">
+                    <button className="btn btn-secondary" type="button" onClick={this.resetName}>RESET</button>
+                  </span>
+                </div>
+
+              </div>
+            )
+          }
+        });
+
+        ReactDOM.render(
+          <ThirdComp/>,
+          document.getElementById('app')
+        );
+    </script>
+
+
+    </script>
+  </body>
+</html>
